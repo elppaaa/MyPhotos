@@ -26,7 +26,7 @@ final class AlbumCell: UITableViewCell {
 
   // MARK: Private
 
-  private lazy var thumbnail = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: 70.0, height: 70.0)) .then {
+  private(set) lazy var thumbnail = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: 70.0, height: 70.0)) .then {
     $0.contentMode = .scaleAspectFill
     $0.clipsToBounds = true
   }
@@ -75,8 +75,6 @@ final class AlbumCell: UITableViewCell {
 // MARK: - Config Cell
 extension AlbumCell {
   func config(with album: Album) {
-    let size = thumbnail.bounds.size
-    thumbnail.image = album.recentPhoto?.image(size: size)
     title.text = album.title
     photosCount.text = String(album.count)
   }

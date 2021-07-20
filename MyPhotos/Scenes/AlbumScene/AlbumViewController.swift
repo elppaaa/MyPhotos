@@ -64,8 +64,14 @@ extension AlbumViewController {
   private func configBinding() {
     // cellForRowAt
     viewModel.output.photos
-      .bind(to: collectionView.rx.items(cellIdentifier: AssetCell.identifier, cellType: AssetCell.self)) { _, asset, cell in
-        cell.config(image: asset.image(size: self.preferredItemSize))
+      .bind(to: collectionView.rx.items(cellIdentifier: AssetCell.identifier,
+                                        cellType: AssetCell.self)) { [weak self] _, asset, cell in
+        guard let self = self else { return }
+
+        asset.image(size: self.preferredItemSize)
+          .observe(on: MainScheduler.instance)
+          .subscribe(onNext: { cell.config(image: $0) })
+          .disposed(by: self.disposeBag)
       }
       .disposed(by: disposeBag)
 

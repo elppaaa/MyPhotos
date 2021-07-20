@@ -11,6 +11,8 @@ import UIKit.UIImage
 import RxSwift
 
 extension PHAsset {
+  static let fetchScheduler = ConcurrentDispatchQueueScheduler(qos: .userInitiated)
+
   var fileName: String? {
     let resources = PHAssetResource.assetResources(for: self)
     guard let resource = resources.first else { return nil }
@@ -24,20 +26,22 @@ extension PHAsset {
     return Float(size) / (1024.0 * 1024.0)
   }
 
-  func image(size: CGSize) -> UIImage? {
-    var image: UIImage?
-    let scale = UIScreen.main.scale
+  func image(size: CGSize) -> Observable<UIImage?> {
+    .create { subscriber in
+      let scale = UIScreen.main.scale
+      let manager = PHImageManager.default()
+      let option = PHImageRequestOptions()
+      option.deliveryMode = .opportunistic
+      option.resizeMode = .exact
 
-    let manager = PHImageManager.default()
-    let option = PHImageRequestOptions()
-    option.deliveryMode = .opportunistic
-    option.resizeMode = .fast
-    let preferredSize = CGSize(width: size.width * scale, height: size.height * scale)
-    manager.requestImage(for: self, targetSize: preferredSize, contentMode: .default, options: option) { _image, _ in
-      image = _image
+      let preferredSize = CGSize(width: size.width * scale, height: size.height * scale)
+      manager.requestImage(for: self, targetSize: preferredSize, contentMode: .default, options: option) { _image, _ in
+        subscriber.onNext(_image)
+      }
+
+      return Disposables.create()
     }
-
-    return image
+    .subscribe(on: Self.fetchScheduler)
   }
 
 }

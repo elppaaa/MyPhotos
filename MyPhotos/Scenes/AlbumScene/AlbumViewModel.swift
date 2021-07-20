@@ -6,35 +6,48 @@
 //
 
 import Foundation
-import UIKit.UIImage
 import Photos
 import RxRelay
 import RxSwift
+import UIKit.UIImage
+
+// MARK: - AlbumViewModelType
 
 protocol AlbumViewModelType {
   var input: AlbumViewModelTypeInput { get }
   var output: AlbumViewModelTypeOutput { get }
 }
 
+// MARK: - AlbumViewModelTypeInput
+
 protocol AlbumViewModelTypeInput {
   func getPhotos()
 }
+
+// MARK: - AlbumViewModelTypeOutput
 
 protocol AlbumViewModelTypeOutput {
   var title: String? { get }
   var photos: BehaviorRelay<[PHAsset]> { get }
 }
 
+// MARK: - AlbumViewModel
+
 final class AlbumViewModel: AlbumViewModelTypeInput, AlbumViewModelTypeOutput {
-  var disposeBag = DisposeBag()
+
+  // MARK: Lifecycle
+
   init(album: PHAssetCollection) {
     self.album = album
   }
-  
-  private let album: PHAssetCollection
-  var title: String? { album.localizedTitle }
+
+  // MARK: Internal
+
+  var disposeBag = DisposeBag()
   var photos = BehaviorRelay<[PHAsset]>(value: [])
-  
+
+  var title: String? { album.localizedTitle }
+
   /// 사진 정보 가져오기
   func getPhotos() {
     DispatchQueue.global(qos: .userInitiated).async {
@@ -42,7 +55,13 @@ final class AlbumViewModel: AlbumViewModelTypeInput, AlbumViewModelTypeOutput {
       self.photos.accept(assets)
     }
   }
+
+  // MARK: Private
+
+  private let album: PHAssetCollection
 }
+
+// MARK: AlbumViewModelType
 
 extension AlbumViewModel: AlbumViewModelType {
   var input: AlbumViewModelTypeInput { self }

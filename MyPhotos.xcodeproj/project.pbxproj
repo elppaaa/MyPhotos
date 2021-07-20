@@ -63,6 +63,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		48B4CE5626A6D9D1002A3196 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				48ED2DE126A6AE1000C014CB /* PHPhotoCollection+Extension.swift */,
+				48ED2DDF26A6AD0D00C014CB /* PHAsset+Extension.swift */,
+				48E21DD726A6B6AC00A6EE75 /* Album.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		48B4CE5726A6D9F5002A3196 /* AlbumListScene */ = {
+			isa = PBXGroup;
+			children = (
+				48D8025E26A5C59B004A8CBD /* AlbumListViewController.swift */,
+				48ED2DDD26A6973F00C014CB /* AlbumListViewModel.swift */,
+				48ED2DDB26A6947500C014CB /* AlbumCell.swift */,
+			);
+			path = AlbumListScene;
+			sourceTree = "<group>";
+		};
+		48B4CE5826A6DA02002A3196 /* AlbumScene */ = {
+			isa = PBXGroup;
+			children = (
+				48D8026E26A5CD90004A8CBD /* AlbumViewController.swift */,
+				48CB3CB326A6D45900B355FF /* AssetCell.swift */,
+				48E21DDC26A6C49700A6EE75 /* AlbumViewModel.swift */,
+			);
+			path = AlbumScene;
+			sourceTree = "<group>";
+		};
+		48B4CE5926A6DA15002A3196 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				48D8028926A6853D004A8CBD /* NSObject+Extension.swift */,
+				48D8028026A5E253004A8CBD /* PhotoLibraryManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		48B4CE5A26A6DA1F002A3196 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				48B4CE5726A6D9F5002A3196 /* AlbumListScene */,
+				48B4CE5826A6DA02002A3196 /* AlbumScene */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		48D8024E26A5C59B004A8CBD = {
 			isa = PBXGroup;
 			children = (
@@ -82,21 +130,13 @@
 		48D8025926A5C59B004A8CBD /* MyPhotos */ = {
 			isa = PBXGroup;
 			children = (
-				48E21DD726A6B6AC00A6EE75 /* Album.swift */,
-				48D8028926A6853D004A8CBD /* NSObject+Extension.swift */,
+				48B4CE5626A6D9D1002A3196 /* Models */,
+				48B4CE5926A6DA15002A3196 /* Utils */,
+				48B4CE5A26A6DA1F002A3196 /* Scenes */,
 				48D8025A26A5C59B004A8CBD /* AppDelegate.swift */,
 				48D8025C26A5C59B004A8CBD /* SceneDelegate.swift */,
-				48D8025E26A5C59B004A8CBD /* AlbumListViewController.swift */,
-				48ED2DDB26A6947500C014CB /* AlbumCell.swift */,
-				48D8026E26A5CD90004A8CBD /* AlbumViewController.swift */,
-				48CB3CB326A6D45900B355FF /* AssetCell.swift */,
-				48E21DDC26A6C49700A6EE75 /* AlbumViewModel.swift */,
 				48D8026326A5C59C004A8CBD /* Assets.xcassets */,
 				48D8026526A5C59C004A8CBD /* LaunchScreen.storyboard */,
-				48D8028026A5E253004A8CBD /* PhotoLibraryManager.swift */,
-				48ED2DE126A6AE1000C014CB /* PHPhotoCollection+Extension.swift */,
-				48ED2DDF26A6AD0D00C014CB /* PHAsset+Extension.swift */,
-				48ED2DDD26A6973F00C014CB /* AlbumListViewModel.swift */,
 				48D8026826A5C59C004A8CBD /* Info.plist */,
 			);
 			path = MyPhotos;

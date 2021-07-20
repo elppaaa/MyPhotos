@@ -5,19 +5,25 @@
 //  Created by JK on 2021/07/20.
 //
 
-import UIKit
 import RxSwift
+import UIKit
+
+// MARK: - AlbumViewController
 
 final class AlbumViewController: UIViewController {
+
+  // MARK: Lifecycle
+
   required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
   init(with viewModel: AlbumViewModelType) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
   }
 
+  // MARK: Internal
+
   var disposeBag = DisposeBag()
   let viewModel: AlbumViewModelType
-  private var preferredItemSize: CGSize = .zero
   lazy var collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout()).then {
     $0.alwaysBounceVertical = true
     $0.register(AssetCell.self, forCellWithReuseIdentifier: AssetCell.identifier)
@@ -37,6 +43,10 @@ final class AlbumViewController: UIViewController {
     viewModel.input.getPhotos()
   }
 
+  // MARK: Private
+
+  private var preferredItemSize: CGSize = .zero
+
   /// 파일 정보 표시
   private func alertAssetInfo(title: String, size: Float) {
     let message = "파일명: \(title)\n파일크기: \(round(size))MB"
@@ -52,15 +62,15 @@ final class AlbumViewController: UIViewController {
 // MARK: - Binding
 extension AlbumViewController {
   private func configBinding() {
+    // cellForRowAt
     viewModel.output.photos
       .bind(to: collectionView.rx.items(cellIdentifier: AssetCell.identifier, cellType: AssetCell.self)) { _, asset, cell in
         cell.set(image: asset.image(size: self.preferredItemSize))
       }
       .disposed(by: disposeBag)
 
-
+    // didSelectItemAt
     collectionView.rx.itemSelected
-      .debug()
       .withUnretained(self)
       .subscribe(onNext: { vc, indexPath in
         let asset = self.viewModel.output.photos.value[indexPath.row]
@@ -82,9 +92,8 @@ extension AlbumViewController {
     let preferredWidth = (screenWidth - 4.0 * 2) / 3
     preferredItemSize = .init(width: preferredWidth, height: preferredWidth)
 
-    layout.itemSize = self.preferredItemSize
+    layout.itemSize = preferredItemSize
 
     return layout
   }
 }
-

@@ -5,20 +5,27 @@
 //  Created by JK on 2021/07/19.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
+
+// MARK: - AlbumListViewController
 
 final class AlbumListViewController: UIViewController {
-  let disposeBag = DisposeBag()
-  let viewModel: AlbumListViewModelType
-  let tableView = UITableView()
+
+  // MARK: Lifecycle
 
   required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
   init(with viewModel: AlbumListViewModelType) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
   }
+
+  // MARK: Internal
+
+  let disposeBag = DisposeBag()
+  let viewModel: AlbumListViewModelType
+  let tableView = UITableView()
 
   override func loadView() {
     super.loadView()
@@ -36,12 +43,11 @@ final class AlbumListViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
+    // 사진 접근 권한 확인
     PhotoLibararyManager.requstAuthorization()
       .observe(on: MainScheduler.instance)
       .subscribe(
-        onCompleted: { [weak self] in
-          self?.viewModel.input.getAllAlbums()
-        },
+        onCompleted: { [weak self] in self?.viewModel.input.getAllAlbums() },
         onError: alertPhotoAccessDenied)
       .disposed(by: disposeBag)
   }
@@ -51,9 +57,10 @@ final class AlbumListViewController: UIViewController {
 extension AlbumListViewController {
   /// 사진 접근 권한 실패 시 alert
   private func alertPhotoAccessDenied(_ err: Error) {
-    let vc = UIAlertController(title: "권한 획득 실패",
-                               message: "사진 접근에 실패하였습니다.\n모든 사진에 대한 권한을 허용해주세요.",
-                               preferredStyle: .alert)
+    let vc = UIAlertController(
+      title: "권한 획득 실패",
+      message: "사진 접근에 실패하였습니다.\n모든 사진에 대한 권한을 허용해주세요.",
+      preferredStyle: .alert)
     let OKAction = UIAlertAction(title: "확인", style: .default, handler: nil)
     let goSettingsAction = UIAlertAction(title: "설정으로 이동", style: .default) { _ in
       guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
@@ -70,12 +77,14 @@ extension AlbumListViewController {
 // MARK: - DataSource
 extension AlbumListViewController {
   private func configBinding() {
+    // cellForRowAt
     viewModel.output.albums
       .bind(to: tableView.rx.items(cellIdentifier: AlbumCell.identifier, cellType: AlbumCell.self)) { _, album, cell in
         cell.config(with: album)
       }
       .disposed(by: disposeBag)
 
+    // didSelectRowAt
     tableView.rx.itemSelected
       .withUnretained(self)
       .subscribe(onNext: { vc, indexPath in
@@ -97,5 +106,3 @@ extension AlbumListViewController {
     tableView.tableFooterView = UIView()
   }
 }
-
-

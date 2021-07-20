@@ -7,21 +7,29 @@
 
 import Foundation
 import Photos
-import RxSwift
 import RxRelay
+import RxSwift
+
+// MARK: - AlbumListViewModelType
 
 protocol AlbumListViewModelType {
   var input: AlbumListViewModelInput { get }
   var output: AlbumListViewModelOutput { get }
 }
 
+// MARK: - AlbumListViewModelInput
+
 protocol AlbumListViewModelInput {
   func getAllAlbums()
 }
+
+// MARK: - AlbumListViewModelOutput
+
 protocol AlbumListViewModelOutput {
   var albums: BehaviorRelay<[Album]> { get }
 }
 
+// MARK: - AlbumListViewModel
 
 final class AlbumListViewModel: AlbumListViewModelInput, AlbumListViewModelOutput {
   var disposeBag = DisposeBag()
@@ -43,6 +51,8 @@ final class AlbumListViewModel: AlbumListViewModelInput, AlbumListViewModelOutpu
     }
   }
 }
+
+// MARK: AlbumListViewModelType
 
 extension AlbumListViewModel: AlbumListViewModelType {
   var input: AlbumListViewModelInput { self }

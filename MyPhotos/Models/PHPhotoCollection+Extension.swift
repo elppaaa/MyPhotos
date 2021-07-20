@@ -12,7 +12,7 @@ extension PHAssetCollection {
   var fetchAssets: [PHAsset] {
     var assets = [PHAsset]()
     let options = PHFetchOptions()
-    options.sortDescriptors = [NSSortDescriptor(key: "modificationDate", ascending: true)]
+    options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
 
     PHAsset.fetchAssets(in: self, options: options)
       .enumerateObjects({ asset, _, _ in

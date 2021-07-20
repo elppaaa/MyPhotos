@@ -10,13 +10,15 @@ import Photos
 import RxSwift
 import UIKit
 
+// MARK: - PhotoLibararyManager
+
 final class PhotoLibararyManager {
   static let library = PHPhotoLibrary.shared()
 
   // iOS 14 에서 limit 권한인 경우 구분하기 위해 분리
   /// 사진 권한 요청.
   static func requstAuthorization() -> Completable {
-    return .create { subscriber in
+    .create { subscriber in
       if #available(iOS 14, *) {
         PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
           if status == .authorized {
@@ -55,6 +57,8 @@ final class PhotoLibararyManager {
   }
 
 }
+
+// MARK: - PhotoLibraryError
 
 enum PhotoLibraryError: Error {
   case accessDenied

@@ -8,12 +8,24 @@
 import UIKit
 
 final class AssetCell: UICollectionViewCell {
-  override var reuseIdentifier: String? { Self.identifier }
+
+  // MARK: Lifecycle
+
   required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
   override init(frame: CGRect) {
     super.init(frame: frame)
     configLayout()
   }
+
+  // MARK: Internal
+
+  override var reuseIdentifier: String? { Self.identifier }
+
+  func set(image: UIImage?) {
+    imageView.image = image
+  }
+
+  // MARK: Private
 
   private lazy var imageView = UIImageView().then {
     $0.contentMode = .scaleAspectFill
@@ -32,7 +44,4 @@ final class AssetCell: UICollectionViewCell {
     ])
   }
 
-  func set(image: UIImage?) {
-    imageView.image = image
-  }
 }

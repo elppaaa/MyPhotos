@@ -5,16 +5,26 @@
 //  Created by JK on 2021/07/20.
 //
 
-import UIKit
 import Then
+import UIKit
+
+// MARK: - AlbumCell
 
 final class AlbumCell: UITableViewCell {
-  override var reuseIdentifier: String? { Self.identifier }
+
+  // MARK: Lifecycle
+
   required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
   override init(style: UITableViewCell.CellStyle, reuseIdentifier _: String?) {
     super.init(style: .default, reuseIdentifier: Self.identifier)
     configLayout()
   }
+
+  // MARK: Internal
+
+  override var reuseIdentifier: String? { Self.identifier }
+
+  // MARK: Private
 
   private lazy var thumbnail = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: 70.0, height: 70.0)) .then {
     $0.contentMode = .scaleAspectFill
@@ -39,11 +49,12 @@ final class AlbumCell: UITableViewCell {
     thumbnail.translatesAutoresizingMaskIntoConstraints = false
     stack.translatesAutoresizingMaskIntoConstraints = false
 
-    contentView.addSubview(thumbnail)
     stack.alignment = .leading
     stack.axis = .vertical
     stack.spacing = 10.0
     stack.distribution = .fillEqually
+
+    contentView.addSubview(thumbnail)
     contentView.addSubview(stack)
 
     NSLayoutConstraint.activate([
@@ -59,10 +70,9 @@ final class AlbumCell: UITableViewCell {
     ])
   }
 
-
 }
 
-// MARK: - Config Cell 
+// MARK: - Config Cell
 extension AlbumCell {
   func config(with album: Album) {
     guard let size = imageView?.bounds.size else { return }

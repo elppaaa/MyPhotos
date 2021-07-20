@@ -36,12 +36,14 @@ extension PHAsset {
 
       let preferredSize = CGSize(width: size.width * scale, height: size.height * scale)
       manager.requestImage(for: self, targetSize: preferredSize, contentMode: .default, options: option) { _image, _ in
-        subscriber.onNext(_image)
+        if let _image = _image {
+          subscriber.onNext(_image)
+        }
       }
 
       return Disposables.create()
     }
     .subscribe(on: Self.fetchScheduler)
   }
-
+  
 }

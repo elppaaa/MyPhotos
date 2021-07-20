@@ -37,6 +37,26 @@ final class PhotoLibararyManager {
       return Disposables.create()
     }
   }
+
+  static func fetchAllAlbums() -> Single<[PHAssetCollection]> {
+    let allPhotosOptions = PHFetchOptions()
+    allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
+
+    return .create { subscriber in
+      var list = [PHAssetCollection]()
+      let recentAlbum = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumRecentlyAdded, options: .none)
+      let allAlbums = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: allPhotosOptions)
+
+      recentAlbum.enumerateObjects { collection, _, _ in list.append(collection) }
+      allAlbums.enumerateObjects { collection, _, _ in list.append(collection) }
+
+      subscriber(.success(list))
+
+      return Disposables.create()
+    }
+    .subscribe(on: ConcurrentDispatchQueueScheduler.init(qos: .background))
+  }
+
 }
 
 enum PhotoLibraryError: Error {

@@ -6,12 +6,17 @@
 //
 
 import UIKit
-import Photos
 import RxSwift
 
 final class AlbumListViewController: UITableViewController {
-  var allPhotos: PHFetchResult<PHAsset>?
   let disposeBag = DisposeBag()
+  let viewModel: AlbumListViewModelType
+
+  required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+  init(with viewModel: AlbumListViewModelType) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
 
   override func loadView() {
     super.loadView()
@@ -24,9 +29,11 @@ final class AlbumListViewController: UITableViewController {
 
     PhotoLibararyManager.requstAuthorization()
       .observe(on: MainScheduler.instance)
-      // tableView reload when complte
-      .subscribe(onCompleted: {  },
-                 onError: alertPhotoAccessDenied)
+      .subscribe(
+        onCompleted: { [weak self] in
+          self?.viewModel.input.getAllAlbums()
+        },
+        onError: alertPhotoAccessDenied)
       .disposed(by: disposeBag)
   }
 }

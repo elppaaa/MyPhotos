@@ -19,15 +19,15 @@ extension PHAsset {
   }
 
   var fileSize: Float? {
-    let resource = PHAssetResource.assetResources(for: self)
-    guard let size = resource.first?.value(forKey: "fileSize") as? Float else { return nil }
-    return size / (1024.0 * 1024.0)
+    let resources = PHAssetResource.assetResources(for: self)
+    guard let size = resources.first?.value(forKey: "fileSize") as? Int else { return nil }
+    return Float(size) / (1024.0 * 1024.0)
   }
 
   func image(size: CGSize) -> UIImage? {
     var image: UIImage?
     let scale = UIScreen.main.scale
-print(scale)
+
     let manager = PHImageManager.default()
     let option = PHImageRequestOptions()
     option.deliveryMode = .opportunistic

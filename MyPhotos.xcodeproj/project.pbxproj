@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48CB3CB426A6D45900B355FF /* AssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CB3CB326A6D45900B355FF /* AssetCell.swift */; };
 		48D8025B26A5C59B004A8CBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D8025A26A5C59B004A8CBD /* AppDelegate.swift */; };
 		48D8025D26A5C59B004A8CBD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D8025C26A5C59B004A8CBD /* SceneDelegate.swift */; };
 		48D8025F26A5C59B004A8CBD /* AlbumListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D8025E26A5C59B004A8CBD /* AlbumListViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		48CB3CB326A6D45900B355FF /* AssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCell.swift; sourceTree = "<group>"; };
 		48D8025726A5C59B004A8CBD /* MyPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48D8025A26A5C59B004A8CBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48D8025C26A5C59B004A8CBD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,8 +38,6 @@
 		48D8026626A5C59C004A8CBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48D8026826A5C59C004A8CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48D8026E26A5CD90004A8CBD /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
-		48D8027826A5E205004A8CBD /* MyPhotosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPhotosTests.swift; sourceTree = "<group>"; };
-		48D8027A26A5E205004A8CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48D8028026A5E253004A8CBD /* PhotoLibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryManager.swift; sourceTree = "<group>"; };
 		48D8028926A6853D004A8CBD /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		48E21DD726A6B6AC00A6EE75 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
@@ -67,7 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				48D8025926A5C59B004A8CBD /* MyPhotos */,
-				48D8027726A5E205004A8CBD /* MyPhotosTests */,
 				48D8025826A5C59B004A8CBD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +89,7 @@
 				48D8025E26A5C59B004A8CBD /* AlbumListViewController.swift */,
 				48ED2DDB26A6947500C014CB /* AlbumCell.swift */,
 				48D8026E26A5CD90004A8CBD /* AlbumViewController.swift */,
+				48CB3CB326A6D45900B355FF /* AssetCell.swift */,
 				48E21DDC26A6C49700A6EE75 /* AlbumViewModel.swift */,
 				48D8026326A5C59C004A8CBD /* Assets.xcassets */,
 				48D8026526A5C59C004A8CBD /* LaunchScreen.storyboard */,
@@ -100,15 +100,6 @@
 				48D8026826A5C59C004A8CBD /* Info.plist */,
 			);
 			path = MyPhotos;
-			sourceTree = "<group>";
-		};
-		48D8027726A5E205004A8CBD /* MyPhotosTests */ = {
-			isa = PBXGroup;
-			children = (
-				48D8027826A5E205004A8CBD /* MyPhotosTests.swift */,
-				48D8027A26A5E205004A8CBD /* Info.plist */,
-			);
-			path = MyPhotosTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +183,7 @@
 			files = (
 				48E21DDD26A6C49700A6EE75 /* AlbumViewModel.swift in Sources */,
 				48ED2DE226A6AE1000C014CB /* PHPhotoCollection+Extension.swift in Sources */,
+				48CB3CB426A6D45900B355FF /* AssetCell.swift in Sources */,
 				48D8026F26A5CD90004A8CBD /* AlbumViewController.swift in Sources */,
 				48D8025F26A5C59B004A8CBD /* AlbumListViewController.swift in Sources */,
 				48D8025B26A5C59B004A8CBD /* AppDelegate.swift in Sources */,

@@ -22,7 +22,7 @@ protocol AlbumViewModelTypeInput {
 
 protocol AlbumViewModelTypeOutput {
   var title: String? { get }
-  var photos: BehaviorSubject<[PHAsset]> { get }
+  var photos: BehaviorRelay<[PHAsset]> { get }
 }
 
 final class AlbumViewModel: AlbumViewModelTypeInput, AlbumViewModelTypeOutput {
@@ -30,16 +30,16 @@ final class AlbumViewModel: AlbumViewModelTypeInput, AlbumViewModelTypeOutput {
   init(album: PHAssetCollection) {
     self.album = album
   }
-
+  
   private let album: PHAssetCollection
   var title: String? { album.localizedTitle }
-  var photos = BehaviorSubject<[PHAsset]>(value: [])
-
+  var photos = BehaviorRelay<[PHAsset]>(value: [])
+  
+  /// 사진 정보 가져오기
   func getPhotos() {
-    DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-      guard let self = self else { return }
+    DispatchQueue.global(qos: .userInitiated).async {
       let assets = self.album.fetchAssets
-      self.photos.onNext(assets)
+      self.photos.accept(assets)
     }
   }
 }

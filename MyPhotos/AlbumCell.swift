@@ -16,17 +16,22 @@ final class AlbumCell: UITableViewCell {
     configLayout()
   }
 
-  private(set) lazy var thumbnail = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: 70.0, height: 70.0))
-  private(set) lazy var title = UILabel().then {
+  private lazy var thumbnail = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: 70.0, height: 70.0)) .then {
+    $0.contentMode = .scaleAspectFill
+    $0.clipsToBounds = true
+  }
+
+  private lazy var title = UILabel().then {
     $0.font = .systemFont(ofSize: 17.0)
     $0.textColor = .black
   }
-  private(set) lazy var photosCount = UILabel().then {
+
+  private lazy var photosCount = UILabel().then {
     $0.font = .systemFont(ofSize: 12.0)
     $0.textColor = .black
   }
 
-  func configLayout() {
+  private func configLayout() {
     selectionStyle = .none
     accessoryType = .disclosureIndicator
 

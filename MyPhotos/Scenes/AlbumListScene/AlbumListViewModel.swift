@@ -32,7 +32,9 @@ protocol AlbumListViewModelOutput {
 // MARK: - AlbumListViewModel
 
 final class AlbumListViewModel: AlbumListViewModelInput, AlbumListViewModelOutput {
-  var disposeBag = DisposeBag()
+
+  // MARK: Internal
+
   var albums = BehaviorRelay<[Album]>(value: [])
 
   func getAllAlbums() {
@@ -50,6 +52,10 @@ final class AlbumListViewModel: AlbumListViewModelInput, AlbumListViewModelOutpu
       self.albums.accept(albums)
     }
   }
+
+  // MARK: Private
+
+  private var disposeBag = DisposeBag()
 }
 
 // MARK: AlbumListViewModelType

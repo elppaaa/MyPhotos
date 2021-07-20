@@ -43,7 +43,6 @@ final class AlbumViewModel: AlbumViewModelTypeInput, AlbumViewModelTypeOutput {
 
   // MARK: Internal
 
-  var disposeBag = DisposeBag()
   var photos = BehaviorRelay<[PHAsset]>(value: [])
 
   var title: String? { album.localizedTitle }
@@ -58,6 +57,7 @@ final class AlbumViewModel: AlbumViewModelTypeInput, AlbumViewModelTypeOutput {
 
   // MARK: Private
 
+  private let disposeBag = DisposeBag()
   private let album: PHAssetCollection
 }
 

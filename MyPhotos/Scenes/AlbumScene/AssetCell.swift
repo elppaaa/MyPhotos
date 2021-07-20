@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - AssetCell
+
 final class AssetCell: UICollectionViewCell {
 
   // MARK: Lifecycle
@@ -20,10 +22,6 @@ final class AssetCell: UICollectionViewCell {
   // MARK: Internal
 
   override var reuseIdentifier: String? { Self.identifier }
-
-  func set(image: UIImage?) {
-    imageView.image = image
-  }
 
   // MARK: Private
 
@@ -44,4 +42,11 @@ final class AssetCell: UICollectionViewCell {
     ])
   }
 
+}
+
+// MARK: - Config Cell
+extension AssetCell {
+  func config(image: UIImage?) {
+    imageView.image = image
+  }
 }

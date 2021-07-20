@@ -13,8 +13,6 @@ import UIKit
 // MARK: - PhotoLibararyManager
 
 final class PhotoLibararyManager {
-  static let library = PHPhotoLibrary.shared()
-
   // iOS 14 에서 limit 권한인 경우 구분하기 위해 분리
   /// 사진 권한 요청.
   static func requstAuthorization() -> Completable {

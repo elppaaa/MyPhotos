@@ -49,7 +49,7 @@ final class AlbumViewController: UIViewController {
 
   /// 파일 정보 표시
   private func alertAssetInfo(title: String, size: Float) {
-    let message = "파일명: \(title)\n파일크기: \(round(size))MB"
+    let message = "파일명: \(title)\n파일크기: \(round(size * 10) / 10)MB"
     let alert = UIAlertController(title: "사진정보", message: message, preferredStyle: .alert)
 
     let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -65,7 +65,7 @@ extension AlbumViewController {
     // cellForRowAt
     viewModel.output.photos
       .bind(to: collectionView.rx.items(cellIdentifier: AssetCell.identifier, cellType: AssetCell.self)) { _, asset, cell in
-        cell.set(image: asset.image(size: self.preferredItemSize))
+        cell.config(image: asset.image(size: self.preferredItemSize))
       }
       .disposed(by: disposeBag)
 

@@ -23,15 +23,10 @@ final class AlbumListViewController: UIViewController {
 
   // MARK: Internal
 
-  let disposeBag = DisposeBag()
-  let viewModel: AlbumListViewModelType
-  let tableView = UITableView()
-
   override func loadView() {
     super.loadView()
     view.backgroundColor = .systemBackground
     view = tableView
-    configTableView()
   }
 
   override func viewDidLoad() {
@@ -51,6 +46,19 @@ final class AlbumListViewController: UIViewController {
         onError: alertPhotoAccessDenied)
       .disposed(by: disposeBag)
   }
+
+  // MARK: Private
+
+  private let disposeBag = DisposeBag()
+  private let viewModel: AlbumListViewModelType
+  private let tableView = UITableView().then {
+    $0.register(AlbumCell.self, forCellReuseIdentifier: AlbumCell.identifier)
+    $0.insetsContentViewsToSafeArea = true
+    $0.rowHeight = 85.0
+    $0.tableHeaderView = UIView()
+    $0.tableFooterView = UIView()
+  }
+
 }
 
 // MARK: - Photo Authorization
@@ -93,16 +101,5 @@ extension AlbumListViewController {
         vc.navigationController?.pushViewController(AlbumViewController(with: viewModel), animated: true)
       })
       .disposed(by: disposeBag)
-  }
-}
-
-// MARK: - Config TableView
-extension AlbumListViewController {
-  private func configTableView() {
-    tableView.register(AlbumCell.self, forCellReuseIdentifier: AlbumCell.identifier)
-    tableView.insetsContentViewsToSafeArea = true
-    tableView.rowHeight = 85.0
-    tableView.tableHeaderView = UIView()
-    tableView.tableFooterView = UIView()
   }
 }

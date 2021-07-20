@@ -12,4 +12,6 @@ struct Album {
   let title: String?
   let recentPhoto: PHAsset?
   let count: Int
+
+  let assetCollection: PHAssetCollection
 }

@@ -30,6 +30,7 @@ final class AlbumListViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configBinding()
+    title = "앨범"
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -74,6 +75,15 @@ extension AlbumListViewController {
         cell.config(with: album)
       }
       .disposed(by: disposeBag)
+
+    tableView.rx.itemSelected
+      .withUnretained(self)
+      .subscribe(onNext: { vc, indexPath in
+        let album = vc.viewModel.output.albums.value[indexPath.row].assetCollection
+        let viewModel = AlbumViewModel(album: album)
+        vc.navigationController?.pushViewController(AlbumViewController(with: viewModel), animated: true)
+      })
+      .disposed(by: disposeBag)
   }
 }
 
@@ -87,3 +97,5 @@ extension AlbumListViewController {
     tableView.tableFooterView = UIView()
   }
 }
+
+

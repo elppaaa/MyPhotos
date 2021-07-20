@@ -19,4 +19,18 @@ extension PHAsset {
 
     return image
   }
+
+  var fileName: String? {
+    let resources = PHAssetResource.assetResources(for: self)
+    guard let resource = resources.first else { return nil }
+
+    return resource.originalFilename
+  }
+
+  var fileSize: Float? {
+    let resource = PHAssetResource.assetResources(for: self)
+    guard let size = resource.first?.value(forKey: "fileSize") as? Float else { return nil }
+    return size / (1024.0*1024.0)
+  }
+  
 }

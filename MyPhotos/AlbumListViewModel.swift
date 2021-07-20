@@ -19,23 +19,27 @@ protocol AlbumListViewModelInput {
   func getAllAlbums()
 }
 protocol AlbumListViewModelOutput {
-  var albums: BehaviorSubject<[Album]> { get }
+  var albums: BehaviorRelay<[Album]> { get }
 }
 
 
 final class AlbumListViewModel: AlbumListViewModelInput, AlbumListViewModelOutput {
   var disposeBag = DisposeBag()
-  var albums = BehaviorSubject<[Album]>(value: [])
+  var albums = BehaviorRelay<[Album]>(value: [])
 
   func getAllAlbums() {
     DispatchQueue.global(qos: .userInitiated).async {
       let fetchedResult = PhotoLibararyManager.fetchAllAlbums()
       let albums = fetchedResult.map { collection -> Album in
         let assets = collection.fetchAssets
-        return Album(title: collection.localizedTitle, recentPhoto: assets.first, count: assets.count)
+        return Album(
+          title: collection.localizedTitle,
+          recentPhoto: assets.first,
+          count: assets.count,
+          assetCollection: collection)
       }
 
-      self.albums.onNext(albums)
+      self.albums.accept(albums)
     }
   }
 }

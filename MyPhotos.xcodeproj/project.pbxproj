@@ -20,6 +20,7 @@
 		48D8028A26A6853D004A8CBD /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D8028926A6853D004A8CBD /* NSObject+Extension.swift */; };
 		48E21DD826A6B6AC00A6EE75 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E21DD726A6B6AC00A6EE75 /* Album.swift */; };
 		48E21DDB26A6C21900A6EE75 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 48E21DDA26A6C21900A6EE75 /* Then */; };
+		48E21DDD26A6C49700A6EE75 /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E21DDC26A6C49700A6EE75 /* AlbumViewModel.swift */; };
 		48ED2DDC26A6947500C014CB /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED2DDB26A6947500C014CB /* AlbumCell.swift */; };
 		48ED2DDE26A6973F00C014CB /* AlbumListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED2DDD26A6973F00C014CB /* AlbumListViewModel.swift */; };
 		48ED2DE026A6AD0D00C014CB /* PHAsset+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED2DDF26A6AD0D00C014CB /* PHAsset+Extension.swift */; };
@@ -40,6 +41,7 @@
 		48D8028026A5E253004A8CBD /* PhotoLibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryManager.swift; sourceTree = "<group>"; };
 		48D8028926A6853D004A8CBD /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		48E21DD726A6B6AC00A6EE75 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		48E21DDC26A6C49700A6EE75 /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
 		48ED2DDB26A6947500C014CB /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
 		48ED2DDD26A6973F00C014CB /* AlbumListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumListViewModel.swift; sourceTree = "<group>"; };
 		48ED2DDF26A6AD0D00C014CB /* PHAsset+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHAsset+Extension.swift"; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				48D8025E26A5C59B004A8CBD /* AlbumListViewController.swift */,
 				48ED2DDB26A6947500C014CB /* AlbumCell.swift */,
 				48D8026E26A5CD90004A8CBD /* AlbumViewController.swift */,
+				48E21DDC26A6C49700A6EE75 /* AlbumViewModel.swift */,
 				48D8026326A5C59C004A8CBD /* Assets.xcassets */,
 				48D8026526A5C59C004A8CBD /* LaunchScreen.storyboard */,
 				48D8028026A5E253004A8CBD /* PhotoLibraryManager.swift */,
@@ -187,6 +190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48E21DDD26A6C49700A6EE75 /* AlbumViewModel.swift in Sources */,
 				48ED2DE226A6AE1000C014CB /* PHPhotoCollection+Extension.swift in Sources */,
 				48D8026F26A5CD90004A8CBD /* AlbumViewController.swift in Sources */,
 				48D8025F26A5C59B004A8CBD /* AlbumListViewController.swift in Sources */,

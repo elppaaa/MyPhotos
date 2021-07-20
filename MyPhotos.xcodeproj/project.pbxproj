@@ -19,6 +19,7 @@
 		48D8028826A67B1C004A8CBD /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 48D8028726A67B1C004A8CBD /* RxRelay */; };
 		48D8028A26A6853D004A8CBD /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D8028926A6853D004A8CBD /* NSObject+Extension.swift */; };
 		48E21DD826A6B6AC00A6EE75 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E21DD726A6B6AC00A6EE75 /* Album.swift */; };
+		48E21DDB26A6C21900A6EE75 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 48E21DDA26A6C21900A6EE75 /* Then */; };
 		48ED2DDC26A6947500C014CB /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED2DDB26A6947500C014CB /* AlbumCell.swift */; };
 		48ED2DDE26A6973F00C014CB /* AlbumListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED2DDD26A6973F00C014CB /* AlbumListViewModel.swift */; };
 		48ED2DE026A6AD0D00C014CB /* PHAsset+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED2DDF26A6AD0D00C014CB /* PHAsset+Extension.swift */; };
@@ -53,6 +54,7 @@
 				48D8028826A67B1C004A8CBD /* RxRelay in Frameworks */,
 				48D8028626A67B1C004A8CBD /* RxCocoa in Frameworks */,
 				48D8028426A67B1C004A8CBD /* RxSwift in Frameworks */,
+				48E21DDB26A6C21900A6EE75 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +128,7 @@
 				48D8028326A67B1C004A8CBD /* RxSwift */,
 				48D8028526A67B1C004A8CBD /* RxCocoa */,
 				48D8028726A67B1C004A8CBD /* RxRelay */,
+				48E21DDA26A6C21900A6EE75 /* Then */,
 			);
 			productName = MyPhotos;
 			productReference = 48D8025726A5C59B004A8CBD /* MyPhotos.app */;
@@ -156,6 +159,7 @@
 			mainGroup = 48D8024E26A5C59B004A8CBD;
 			packageReferences = (
 				48D8028226A67B1C004A8CBD /* XCRemoteSwiftPackageReference "RxSwift" */,
+				48E21DD926A6C21900A6EE75 /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = 48D8025826A5C59B004A8CBD /* Products */;
 			projectDirPath = "";
@@ -397,6 +401,14 @@
 				minimumVersion = 6.2.0;
 			};
 		};
+		48E21DD926A6C21900A6EE75 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -414,6 +426,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 48D8028226A67B1C004A8CBD /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxRelay;
+		};
+		48E21DDA26A6C21900A6EE75 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48E21DD926A6C21900A6EE75 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

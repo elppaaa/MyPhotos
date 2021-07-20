@@ -28,7 +28,7 @@ final class AlbumListViewModel: AlbumListViewModelInput, AlbumListViewModelOutpu
   var albums = BehaviorSubject<[Album]>(value: [])
 
   func getAllAlbums() {
-    DispatchQueue.global(qos: .background).async {
+    DispatchQueue.global(qos: .userInitiated).async {
       let fetchedResult = PhotoLibararyManager.fetchAllAlbums()
       let albums = fetchedResult.map { collection -> Album in
         let assets = collection.fetchAssets

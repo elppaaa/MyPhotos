@@ -9,9 +9,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class AlbumListViewController: UITableViewController {
+final class AlbumListViewController: UIViewController {
   let disposeBag = DisposeBag()
   let viewModel: AlbumListViewModelType
+  let tableView = UITableView()
 
   required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
   init(with viewModel: AlbumListViewModelType) {
@@ -22,6 +23,7 @@ final class AlbumListViewController: UITableViewController {
   override func loadView() {
     super.loadView()
     view.backgroundColor = .systemBackground
+    view = tableView
     configTableView()
   }
 
@@ -68,7 +70,9 @@ extension AlbumListViewController {
 extension AlbumListViewController {
   private func configBinding() {
     viewModel.output.albums
-      .bind(to: tableView.rx.items(cellIdentifier: AlbumCell.identifier)) { _, _, _ in  }
+      .bind(to: tableView.rx.items(cellIdentifier: AlbumCell.identifier, cellType: AlbumCell.self)) { _, album, cell in
+        cell.config(with: album)
+      }
       .disposed(by: disposeBag)
   }
 }
@@ -77,6 +81,9 @@ extension AlbumListViewController {
 extension AlbumListViewController {
   private func configTableView() {
     tableView.register(AlbumCell.self, forCellReuseIdentifier: AlbumCell.identifier)
+    tableView.insetsContentViewsToSafeArea = true
     tableView.rowHeight = 85.0
+    tableView.tableHeaderView = UIView()
+    tableView.tableFooterView = UIView()
   }
 }

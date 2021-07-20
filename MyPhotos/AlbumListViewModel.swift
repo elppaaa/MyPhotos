@@ -19,18 +19,24 @@ protocol AlbumListViewModelInput {
   func getAllAlbums()
 }
 protocol AlbumListViewModelOutput {
-  var albums: BehaviorSubject<[PHAssetCollection]> { get }
+  var albums: BehaviorSubject<[Album]> { get }
 }
+
 
 final class AlbumListViewModel: AlbumListViewModelInput, AlbumListViewModelOutput {
   var disposeBag = DisposeBag()
-  var albums = BehaviorSubject<[PHAssetCollection]>(value: [])
+  var albums = BehaviorSubject<[Album]>(value: [])
 
   func getAllAlbums() {
-    PhotoLibararyManager.fetchAllAlbums()
-      .debug()
-      .subscribe { [weak self] in self?.albums.onNext($0) }
-      .disposed(by: disposeBag)
+    DispatchQueue.global(qos: .background).async {
+      let fetchedResult = PhotoLibararyManager.fetchAllAlbums()
+      let albums = fetchedResult.map { collection -> Album in
+        let assets = collection.fetchAssets
+        return Album(title: collection.localizedTitle, recentPhoto: assets.first, count: assets.count)
+      }
+
+      self.albums.onNext(albums)
+    }
   }
 }
 

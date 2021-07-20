@@ -18,8 +18,11 @@
 		48D8028626A67B1C004A8CBD /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 48D8028526A67B1C004A8CBD /* RxCocoa */; };
 		48D8028826A67B1C004A8CBD /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 48D8028726A67B1C004A8CBD /* RxRelay */; };
 		48D8028A26A6853D004A8CBD /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D8028926A6853D004A8CBD /* NSObject+Extension.swift */; };
+		48E21DD826A6B6AC00A6EE75 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E21DD726A6B6AC00A6EE75 /* Album.swift */; };
 		48ED2DDC26A6947500C014CB /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED2DDB26A6947500C014CB /* AlbumCell.swift */; };
 		48ED2DDE26A6973F00C014CB /* AlbumListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED2DDD26A6973F00C014CB /* AlbumListViewModel.swift */; };
+		48ED2DE026A6AD0D00C014CB /* PHAsset+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED2DDF26A6AD0D00C014CB /* PHAsset+Extension.swift */; };
+		48ED2DE226A6AE1000C014CB /* PHPhotoCollection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ED2DE126A6AE1000C014CB /* PHPhotoCollection+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +38,11 @@
 		48D8027A26A5E205004A8CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48D8028026A5E253004A8CBD /* PhotoLibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryManager.swift; sourceTree = "<group>"; };
 		48D8028926A6853D004A8CBD /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		48E21DD726A6B6AC00A6EE75 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		48ED2DDB26A6947500C014CB /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
 		48ED2DDD26A6973F00C014CB /* AlbumListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumListViewModel.swift; sourceTree = "<group>"; };
+		48ED2DDF26A6AD0D00C014CB /* PHAsset+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHAsset+Extension.swift"; sourceTree = "<group>"; };
+		48ED2DE126A6AE1000C014CB /* PHPhotoCollection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHPhotoCollection+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,7 @@
 		48D8025926A5C59B004A8CBD /* MyPhotos */ = {
 			isa = PBXGroup;
 			children = (
+				48E21DD726A6B6AC00A6EE75 /* Album.swift */,
 				48D8028926A6853D004A8CBD /* NSObject+Extension.swift */,
 				48D8025A26A5C59B004A8CBD /* AppDelegate.swift */,
 				48D8025C26A5C59B004A8CBD /* SceneDelegate.swift */,
@@ -82,6 +89,8 @@
 				48D8026326A5C59C004A8CBD /* Assets.xcassets */,
 				48D8026526A5C59C004A8CBD /* LaunchScreen.storyboard */,
 				48D8028026A5E253004A8CBD /* PhotoLibraryManager.swift */,
+				48ED2DE126A6AE1000C014CB /* PHPhotoCollection+Extension.swift */,
+				48ED2DDF26A6AD0D00C014CB /* PHAsset+Extension.swift */,
 				48ED2DDD26A6973F00C014CB /* AlbumListViewModel.swift */,
 				48D8026826A5C59C004A8CBD /* Info.plist */,
 			);
@@ -174,12 +183,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48ED2DE226A6AE1000C014CB /* PHPhotoCollection+Extension.swift in Sources */,
 				48D8026F26A5CD90004A8CBD /* AlbumViewController.swift in Sources */,
 				48D8025F26A5C59B004A8CBD /* AlbumListViewController.swift in Sources */,
 				48D8025B26A5C59B004A8CBD /* AppDelegate.swift in Sources */,
+				48ED2DE026A6AD0D00C014CB /* PHAsset+Extension.swift in Sources */,
 				48ED2DDC26A6947500C014CB /* AlbumCell.swift in Sources */,
 				48ED2DDE26A6973F00C014CB /* AlbumListViewModel.swift in Sources */,
 				48D8025D26A5C59B004A8CBD /* SceneDelegate.swift in Sources */,
+				48E21DD826A6B6AC00A6EE75 /* Album.swift in Sources */,
 				48D8028126A5E253004A8CBD /* PhotoLibraryManager.swift in Sources */,
 				48D8028A26A6853D004A8CBD /* NSObject+Extension.swift in Sources */,
 			);

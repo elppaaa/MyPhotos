@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 final class AlbumListViewController: UITableViewController {
   let disposeBag = DisposeBag()
@@ -24,6 +25,11 @@ final class AlbumListViewController: UITableViewController {
     configTableView()
   }
 
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    configBinding()
+  }
+
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
@@ -38,6 +44,7 @@ final class AlbumListViewController: UITableViewController {
   }
 }
 
+// MARK: - Photo Authorization
 extension AlbumListViewController {
   /// 사진 접근 권한 실패 시 alert
   private func alertPhotoAccessDenied(_ err: Error) {
@@ -57,6 +64,16 @@ extension AlbumListViewController {
   }
 }
 
+// MARK: - DataSource
+extension AlbumListViewController {
+  private func configBinding() {
+    viewModel.output.albums
+      .bind(to: tableView.rx.items(cellIdentifier: AlbumCell.identifier)) { _, _, _ in  }
+      .disposed(by: disposeBag)
+  }
+}
+
+// MARK: - Config TableView
 extension AlbumListViewController {
   private func configTableView() {
     tableView.register(AlbumCell.self, forCellReuseIdentifier: AlbumCell.identifier)

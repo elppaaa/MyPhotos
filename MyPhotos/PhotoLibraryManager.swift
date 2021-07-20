@@ -8,6 +8,7 @@
 import Foundation
 import Photos
 import RxSwift
+import UIKit
 
 final class PhotoLibararyManager {
   static let library = PHPhotoLibrary.shared()
@@ -38,23 +39,19 @@ final class PhotoLibararyManager {
     }
   }
 
-  static func fetchAllAlbums() -> Single<[PHAssetCollection]> {
+  /// 모든 앨범들 목록을 가져옴.
+  static func fetchAllAlbums() -> [PHAssetCollection] {
     let allPhotosOptions = PHFetchOptions()
     allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
 
-    return .create { subscriber in
-      var list = [PHAssetCollection]()
-      let recentAlbum = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumRecentlyAdded, options: .none)
-      let allAlbums = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: allPhotosOptions)
+    var list = [PHAssetCollection]()
+    let recentAlbum = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: .none)
+    let allAlbums = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: allPhotosOptions)
 
-      recentAlbum.enumerateObjects { collection, _, _ in list.append(collection) }
-      allAlbums.enumerateObjects { collection, _, _ in list.append(collection) }
+    recentAlbum.enumerateObjects { collection, _, _ in list.append(collection) }
+    allAlbums.enumerateObjects { collection, _, _ in list.append(collection) }
 
-      subscriber(.success(list))
-
-      return Disposables.create()
-    }
-    .subscribe(on: ConcurrentDispatchQueueScheduler.init(qos: .background))
+    return list
   }
 
 }

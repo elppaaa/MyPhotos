@@ -75,7 +75,7 @@ final class AlbumCell: UITableViewCell {
 // MARK: - Config Cell
 extension AlbumCell {
   func config(with album: Album) {
-    guard let size = imageView?.bounds.size else { return }
+    let size = thumbnail.bounds.size
     thumbnail.image = album.recentPhoto?.image(size: size)
     title.text = album.title
     photosCount.text = String(album.count)

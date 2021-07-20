@@ -8,6 +8,7 @@
 import Foundation
 import Photos
 import UIKit.UIImage
+import RxSwift
 
 extension PHAsset {
   var fileName: String? {
@@ -25,8 +26,14 @@ extension PHAsset {
 
   func image(size: CGSize) -> UIImage? {
     var image: UIImage?
+    let scale = UIScreen.main.scale
+print(scale)
     let manager = PHImageManager.default()
-    manager.requestImage(for: self, targetSize: size, contentMode: .aspectFit, options: nil) { _image, _ in
+    let option = PHImageRequestOptions()
+    option.deliveryMode = .opportunistic
+    option.resizeMode = .fast
+    let preferredSize = CGSize(width: size.width * scale, height: size.height * scale)
+    manager.requestImage(for: self, targetSize: preferredSize, contentMode: .default, options: option) { _image, _ in
       image = _image
     }
 

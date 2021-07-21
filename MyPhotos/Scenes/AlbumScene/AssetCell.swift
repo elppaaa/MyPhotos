@@ -5,6 +5,8 @@
 //  Created by JK on 2021/07/20.
 //
 
+import Photos.PHAsset
+import RxSwift
 import UIKit
 
 // MARK: - AssetCell
@@ -23,7 +25,15 @@ final class AssetCell: UICollectionViewCell {
 
   override var reuseIdentifier: String? { Self.identifier }
 
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    disposable?.dispose()
+    disposable = nil
+  }
+
   // MARK: Private
+
+  private var disposable: Disposable?
 
   private lazy var imageView = UIImageView().then {
     $0.contentMode = .scaleAspectFill
@@ -46,7 +56,9 @@ final class AssetCell: UICollectionViewCell {
 
 // MARK: - Config Cell
 extension AssetCell {
-  func config(image: UIImage?) {
-    imageView.image = image
+  func config(with asset: PHAsset) {
+    disposable = asset.rx.image(size: imageView.bounds.size)
+      .asDriver(onErrorJustReturn: nil)
+      .drive(imageView.rx.image)
   }
 }

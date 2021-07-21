@@ -5,6 +5,7 @@
 //  Created by JK on 2021/07/20.
 //
 
+import RxSwift
 import Then
 import UIKit
 
@@ -24,9 +25,17 @@ final class AlbumCell: UITableViewCell {
 
   override var reuseIdentifier: String? { Self.identifier }
 
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    disposable?.dispose()
+    disposable = nil
+  }
+
   // MARK: Private
 
-  private(set) lazy var thumbnail = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: 70.0, height: 70.0)) .then {
+  private var disposable: Disposable?
+
+  private lazy var thumbnail = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: 70.0, height: 70.0)) .then {
     $0.contentMode = .scaleAspectFill
     $0.clipsToBounds = true
   }
@@ -77,5 +86,8 @@ extension AlbumCell {
   func config(with album: Album) {
     title.text = album.title
     photosCount.text = String(album.count)
+    disposable = album.recentPhoto?.rx.image(size: thumbnail.bounds.size)
+      .asDriver(onErrorJustReturn: nil)
+      .drive(thumbnail.rx.image)
   }
 }

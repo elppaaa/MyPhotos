@@ -42,7 +42,7 @@ final class AlbumListViewController: UIViewController {
     PhotoLibararyManager.requstAuthorization()
       .observe(on: MainScheduler.instance)
       .subscribe(
-        onCompleted: { [weak self] in self?.viewModel.input.getAllAlbums() },
+        onCompleted: viewModel.input.getAllAlbums,
         onError: alertPhotoAccessDenied)
       .disposed(by: disposeBag)
   }
@@ -87,16 +87,8 @@ extension AlbumListViewController {
   private func configBinding() {
     // cellForRowAt
     viewModel.output.albums
-      .bind( to: tableView.rx.items(cellIdentifier: AlbumCell.identifier,
-                               cellType: AlbumCell.self)) { [weak self] _, album, cell in
-        guard let self = self else { return }
-        
+      .bind(to: tableView.rx.items(cellIdentifier: AlbumCell.identifier, cellType: AlbumCell.self)) { _, album, cell in
         cell.config(with: album)
-        let size = cell.thumbnail.bounds.size
-        album.recentPhoto?.image(size: size)
-          .observe(on: MainScheduler.instance)
-          .subscribe(onNext: { cell.thumbnail.image = $0 })
-          .disposed(by: self.disposeBag)
       }
       .disposed(by: disposeBag)
 

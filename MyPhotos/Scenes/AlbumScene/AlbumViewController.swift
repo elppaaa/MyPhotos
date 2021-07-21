@@ -22,8 +22,8 @@ final class AlbumViewController: UIViewController {
 
   // MARK: Internal
 
-  var disposeBag = DisposeBag()
-  let viewModel: AlbumViewModelType
+  private let disposeBag = DisposeBag()
+  private let viewModel: AlbumViewModelType
   lazy var collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout()).then {
     $0.alwaysBounceVertical = true
     $0.register(AssetCell.self, forCellWithReuseIdentifier: AssetCell.identifier)
@@ -52,8 +52,8 @@ final class AlbumViewController: UIViewController {
     let message = "파일명: \(title)\n파일크기: \(round(size * 10) / 10)MB"
     let alert = UIAlertController(title: "사진정보", message: message, preferredStyle: .alert)
 
-    let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-    alert.addAction(OKAction)
+    let confirmAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+    alert.addAction(confirmAction)
 
     present(alert, animated: true, completion: nil)
   }
@@ -64,19 +64,15 @@ extension AlbumViewController {
   private func configBinding() {
     // cellForRowAt
     viewModel.output.photos
-      .bind(to: collectionView.rx.items(cellIdentifier: AssetCell.identifier,
-                                        cellType: AssetCell.self)) { [weak self] _, asset, cell in
-        guard let self = self else { return }
-
-        asset.image(size: self.preferredItemSize)
-          .observe(on: MainScheduler.instance)
-          .subscribe(onNext: { cell.config(image: $0) })
-          .disposed(by: self.disposeBag)
+      .bind(to: collectionView.rx.items(
+              cellIdentifier: AssetCell.identifier, cellType: AssetCell.self)) { _, asset, cell in
+          cell.config(with: asset)
       }
       .disposed(by: disposeBag)
 
     // didSelectItemAt
     collectionView.rx.itemSelected
+      .observe(on: MainScheduler.instance)
       .withUnretained(self)
       .subscribe(onNext: { vc, indexPath in
         let asset = self.viewModel.output.photos.value[indexPath.row]

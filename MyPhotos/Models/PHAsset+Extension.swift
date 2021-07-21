@@ -7,8 +7,8 @@
 
 import Foundation
 import Photos
-import UIKit.UIImage
 import RxSwift
+import UIKit.UIImage
 
 extension PHAsset {
   static let fetchScheduler = ConcurrentDispatchQueueScheduler(qos: .userInitiated)
@@ -25,7 +25,9 @@ extension PHAsset {
     guard let size = resources.first?.value(forKey: "fileSize") as? Int else { return nil }
     return Float(size) / (1024.0 * 1024.0)
   }
+}
 
+extension Reactive where Base: PHAsset {
   func image(size: CGSize) -> Observable<UIImage?> {
     .create { subscriber in
       let scale = UIScreen.main.scale
@@ -35,7 +37,7 @@ extension PHAsset {
       option.resizeMode = .exact
 
       let preferredSize = CGSize(width: size.width * scale, height: size.height * scale)
-      manager.requestImage(for: self, targetSize: preferredSize, contentMode: .default, options: option) { _image, _ in
+      manager.requestImage(for: base, targetSize: preferredSize, contentMode: .default, options: option) { _image, _ in
         if let _image = _image {
           subscriber.onNext(_image)
         }
@@ -43,7 +45,6 @@ extension PHAsset {
 
       return Disposables.create()
     }
-    .subscribe(on: Self.fetchScheduler)
+    .subscribe(on: PHAsset.fetchScheduler)
   }
-  
 }

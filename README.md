@@ -23,6 +23,37 @@
   - Then
   - Photos
 
+## 주요 파일 구조
+
+```
+MyPhotos
+└── MyPhotos
+   ├── Models
+   │  ├── Album.swift
+   │  ├── PHAsset+Extension.swift
+   │  └── PHPhotoCollection+Extension.swift
+   ├── Scenes
+   │  ├── AlbumListScene
+   │  │  ├── AlbumCell.swift
+   │  │  ├── AlbumListViewController.swift
+   │  │  └── AlbumListViewModel.swift
+   │  └── AlbumScene
+   │     ├── AlbumViewController.swift
+   │     ├── AlbumViewModel.swift
+   │     └── AssetCell.swift
+   └── Utils
+      ├── NSObject+Extension.swift
+      └── PhotoLibraryManager.swift
+
+```
+
+- `Album` : 앨범 데이터를 담는 모델 구조체입니다.
+- `PHAsset+Extension` : 이미지 / 비디오 등의 정보를 갖는 `PHAsset` 클래스에서 파일 이름, 용량 정보, 이미지 를 가져오기 위한 프로퍼티를 정의합니다.
+- `PHPhotoCollection+Extension` : `PHAsset` 의 컬렉션인 `PHPhotoCollection` 에 속한 `PHAsset` 들을 가져오기 위한 함수가 정의되어 있습니다.
+- `AlbumListScene` : 초기 화면인 앨범 목록 화면을 구성하기 위한 씬입니다.
+- `AlbumScene` : 해당 앨범의 사진을 표시하고 이미지 정보 표시하는 씬입니다.
+- `PhotoLibararyManager` : 사진 접근 권한 획득 및 앨범 정보를 수집합니다.
+
 ## 스크린샷
 
 #### 앨범 목록 화면

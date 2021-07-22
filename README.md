@@ -1,4 +1,4 @@
-# Flow iOS 사전 과제
+# 마드라스체크 iOS 사전 과제
 
 ## 과제 설명
 
@@ -27,13 +27,14 @@
 
 #### 앨범 목록 화면
 
-<img src="images/ 2021-07-22 at 20.14.56.png" alt=" 2021-07-22 at 20.14.56" style="zoom:25%;" />  
+<img src="images/ 2021-07-22 at 20.14.56.png" alt=" 2021-07-22 at 20.14.56" width="25%;" />  
 
 #### 앨범 화면
 
-<img src="images/ 2021-07-22 at 20.14.58.png" alt=" 2021-07-22 at 20.14.58" style="zoom:25%;" /> 
+<img src="images/ 2021-07-22 at 20.14.58.png" alt=" 2021-07-22 at 20.14.58" width="25%;" /> 
 
 #### 이미지 선택 시
 
-<img src="images/ 2021-07-22 at 20.15.03.png" alt=" 2021-07-22 at 20.15.03" style="zoom:25%;" />
+<img src="images/ 2021-07-22 at 20.15.03.png" alt=" 2021-07-22 at 20.15.03" width="25%;" />
+
 

@@ -41,12 +41,12 @@ final class AlbumCell: UITableViewCell {
   }
 
   private lazy var title = UILabel().then {
-    $0.font = .systemFont(ofSize: 17.0)
+    $0.font = .preferredFont(forTextStyle: .body)
     $0.textColor = .label
   }
 
   private lazy var photosCount = UILabel().then {
-    $0.font = .systemFont(ofSize: 12.0)
+    $0.font = .preferredFont(forTextStyle: .caption1)
     $0.textColor = .label
   }
 

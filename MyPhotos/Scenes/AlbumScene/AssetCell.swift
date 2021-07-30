@@ -19,6 +19,7 @@ final class AssetCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     configLayout()
+    configAccessibility()
   }
 
   // MARK: Internal
@@ -51,7 +52,6 @@ final class AssetCell: UICollectionViewCell {
       imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
     ])
   }
-
 }
 
 // MARK: - Config Cell
@@ -60,5 +60,15 @@ extension AssetCell {
     disposable = asset.rx.image(size: imageView.bounds.size)
       .asDriver(onErrorJustReturn: nil)
       .drive(imageView.rx.image)
+  }
+}
+
+// MARK: - Accessibility
+extension AssetCell {
+  private func configAccessibility() {
+    isAccessibilityElement = true
+    accessibilityLabel = "Image".localized
+    accessibilityHint = "Tap to view photo information".localized
+    accessibilityTraits = .image
   }
 }

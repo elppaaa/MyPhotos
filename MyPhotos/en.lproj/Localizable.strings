@@ -15,3 +15,8 @@
 "File Name" = "File Name";
 "File Size" = "File Size";
 "Photo Info" = "Photo Info";
+
+
+// Accessibility Label
+"Image" = "Image";
+"Tap to view photo information" = "Tap to view photo information";

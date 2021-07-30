@@ -15,3 +15,7 @@
 "File Name" = "파일명";
 "File Size" = "파일 크기";
 "Photo Info" = "사진 정보";
+
+// Accessibility Label
+"Image" = "사진";
+"Tap to view photo information" = "사진 정보를 확인하려면 사진읍 탭하세요.";

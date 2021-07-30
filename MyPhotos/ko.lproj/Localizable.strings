@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  MyPhotos
+
+  Created by JK on 2021/07/30.
+  
+*/
+
+"Failed to access Photos" = "권한 획득 실패";
+"Please check `All Photos` in the settings." = "사진 접근에 실패하였습니다.\n모든 사진에 대한 권한을 허용해주세요.";
+"Confirm" = "확인";
+"Cancel" = "취소";
+"Go to settings" = "설정으로 이동";
+"Albums" = "앨범";
+"File Name" = "파일명";
+"File Size" = "파일 크기";
+"Photo Info" = "사진 정보";

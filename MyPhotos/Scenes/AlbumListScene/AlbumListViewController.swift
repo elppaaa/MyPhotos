@@ -32,7 +32,7 @@ final class AlbumListViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configBinding()
-    title = "앨범"
+    title = "Albums".localized
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -66,11 +66,11 @@ extension AlbumListViewController {
   /// 사진 접근 권한 실패 시 alert
   private func alertPhotoAccessDenied(_ err: Error) {
     let vc = UIAlertController(
-      title: "권한 획득 실패",
-      message: "사진 접근에 실패하였습니다.\n모든 사진에 대한 권한을 허용해주세요.",
+      title: "Failed to access Photos".localized,
+      message: "Please check `All Photos` in the settings.".localized,
       preferredStyle: .alert)
-    let OKAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-    let goSettingsAction = UIAlertAction(title: "설정으로 이동", style: .default) { _ in
+    let OKAction = UIAlertAction(title: "Confirm".localized, style: .default, handler: nil)
+    let goSettingsAction = UIAlertAction(title: "Go to settings".localized, style: .default) { _ in
       guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
       UIApplication.shared.open(url)
     }

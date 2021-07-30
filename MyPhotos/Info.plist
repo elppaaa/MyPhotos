@@ -21,7 +21,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>앨범 표시를 위해 사용자의 사진에 접근합니다.</string>
+	<string>사용자의 사진에 접근하고자 합니다. 모든 사진에 체크해 주세요.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

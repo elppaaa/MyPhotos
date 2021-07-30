@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  MyPhotos
+
+  Created by JK on 2021/07/30.
+  
+*/
+
+"Failed to access Photos" = "Failed to access Photos";
+"Please check `All Photos` in the settings." = "Please check `All Photos` in the settings.";
+"Confirm" = "Confirm";
+"Cancel" = "Cancle";
+"Go to settings" = "Go to settings";
+"Albums" = "Albums";
+"File Name" = "File Name";
+"File Size" = "File Size";
+"Photo Info" = "Photo Info";

@@ -49,10 +49,13 @@ final class AlbumViewController: UIViewController {
 
   /// 파일 정보 표시
   private func alertAssetInfo(title: String, size: Float) {
-    let message = "파일명: \(title)\n파일크기: \(round(size * 10) / 10)MB"
-    let alert = UIAlertController(title: "사진정보", message: message, preferredStyle: .alert)
+    let message = String(format: "%@: %@\n%@: %.1fMB", arguments: [
+      "File Size".localized, title, "File Size".localized, size
+    ])
 
-    let confirmAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+    let alert = UIAlertController(title: "Photo Info".localized, message: message, preferredStyle: .alert)
+
+    let confirmAction = UIAlertAction(title: "Confirm".localized, style: .default, handler: nil)
     alert.addAction(confirmAction)
 
     present(alert, animated: true, completion: nil)

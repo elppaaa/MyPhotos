@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		48CB3CB426A6D45900B355FF /* AssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CB3CB326A6D45900B355FF /* AssetCell.swift */; };
+		48D68A5A26B3DC9F008477ED /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D68A5926B3DC9F008477ED /* String+Extension.swift */; };
+		48D68A8226B3E7E2008477ED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 48D68A8426B3E7E2008477ED /* Localizable.strings */; };
 		48D8025B26A5C59B004A8CBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D8025A26A5C59B004A8CBD /* AppDelegate.swift */; };
 		48D8025D26A5C59B004A8CBD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D8025C26A5C59B004A8CBD /* SceneDelegate.swift */; };
 		48D8025F26A5C59B004A8CBD /* AlbumListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D8025E26A5C59B004A8CBD /* AlbumListViewController.swift */; };
@@ -30,6 +32,9 @@
 
 /* Begin PBXFileReference section */
 		48CB3CB326A6D45900B355FF /* AssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCell.swift; sourceTree = "<group>"; };
+		48D68A5926B3DC9F008477ED /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		48D68A8326B3E7E2008477ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		48D68A8E26B3ECB2008477ED /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		48D8025726A5C59B004A8CBD /* MyPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48D8025A26A5C59B004A8CBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48D8025C26A5C59B004A8CBD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,8 +140,10 @@
 				48B4CE5A26A6DA1F002A3196 /* Scenes */,
 				48D8025A26A5C59B004A8CBD /* AppDelegate.swift */,
 				48D8025C26A5C59B004A8CBD /* SceneDelegate.swift */,
+				48D68A5926B3DC9F008477ED /* String+Extension.swift */,
 				48D8026326A5C59C004A8CBD /* Assets.xcassets */,
 				48D8026526A5C59C004A8CBD /* LaunchScreen.storyboard */,
+				48D68A8426B3E7E2008477ED /* Localizable.strings */,
 				48D8026826A5C59C004A8CBD /* Info.plist */,
 			);
 			path = MyPhotos;
@@ -189,6 +196,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 48D8024E26A5C59B004A8CBD;
 			packageReferences = (
@@ -210,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48D8026726A5C59C004A8CBD /* LaunchScreen.storyboard in Resources */,
+				48D68A8226B3E7E2008477ED /* Localizable.strings in Resources */,
 				48D8026426A5C59C004A8CBD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,6 +237,7 @@
 				48D8025F26A5C59B004A8CBD /* AlbumListViewController.swift in Sources */,
 				48D8025B26A5C59B004A8CBD /* AppDelegate.swift in Sources */,
 				48ED2DE026A6AD0D00C014CB /* PHAsset+Extension.swift in Sources */,
+				48D68A5A26B3DC9F008477ED /* String+Extension.swift in Sources */,
 				48ED2DDC26A6947500C014CB /* AlbumCell.swift in Sources */,
 				48ED2DDE26A6973F00C014CB /* AlbumListViewModel.swift in Sources */,
 				48D8025D26A5C59B004A8CBD /* SceneDelegate.swift in Sources */,
@@ -240,6 +250,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		48D68A8426B3E7E2008477ED /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48D68A8326B3E7E2008477ED /* en */,
+				48D68A8E26B3ECB2008477ED /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		48D8026526A5C59C004A8CBD /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -255,6 +274,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -316,6 +336,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

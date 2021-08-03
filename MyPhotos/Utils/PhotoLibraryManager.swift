@@ -13,8 +13,11 @@ import UIKit
 // MARK: - PhotoLibararyManager
 
 final class PhotoLibararyManager {
-  // iOS 14 에서 limit 권한인 경우 구분하기 위해 분리
-  /// 사진 권한 요청.
+  /**
+   사진 권한 요청.
+
+   iOS 14.0 이후 버전에서 일부 사진만 선택한 경우, 모든 사진을 선택할 수 있도록 거절함.
+   */
   static func requstAuthorization() -> Completable {
     .create { subscriber in
       if #available(iOS 14, *) {
@@ -39,7 +42,11 @@ final class PhotoLibararyManager {
     }
   }
 
-  /// 모든 앨범들 목록을 가져옴.
+  /**
+   모든 앨범 정보를 가져옴
+
+   최근 순으로 정렬하여 모든 앨범 정보를 가져온다.
+   */
   static func fetchAllAlbums() -> [PHAssetCollection] {
     let allPhotosOptions = PHFetchOptions()
     allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]

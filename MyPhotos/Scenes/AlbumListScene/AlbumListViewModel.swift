@@ -20,12 +20,14 @@ protocol AlbumListViewModelType {
 // MARK: - AlbumListViewModelInput
 
 protocol AlbumListViewModelInput {
+  /// 앨범 목록을 가져오도록 요청
   func getAllAlbums()
 }
 
 // MARK: - AlbumListViewModelOutput
 
 protocol AlbumListViewModelOutput {
+  /// 앨범 목록
   var albums: BehaviorRelay<[Album]> { get }
 }
 

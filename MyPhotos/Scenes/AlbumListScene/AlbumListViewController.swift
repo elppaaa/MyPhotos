@@ -82,17 +82,20 @@ extension AlbumListViewController {
   }
 }
 
-// MARK: - DataSource
+// MARK: - DataSource & Delgate
 extension AlbumListViewController {
   private func configBinding() {
-    // cellForRowAt
+    /// cellForRowAt
+    /// `viewModel.output.albums`를 관찰하여 `tableView` 업데이트
     viewModel.output.albums
       .bind(to: tableView.rx.items(cellIdentifier: AlbumCell.identifier, cellType: AlbumCell.self)) { _, album, cell in
         cell.config(with: album)
       }
       .disposed(by: disposeBag)
 
-    // didSelectRowAt
+    /// didSelectRowAt
+    /// `tableView` 내부 셀 선택시 호출.
+    /// 셀 선택시 해당 앨범의 사진목록 표시
     tableView.rx.itemSelected
       .withUnretained(self)
       .subscribe(onNext: { vc, indexPath in

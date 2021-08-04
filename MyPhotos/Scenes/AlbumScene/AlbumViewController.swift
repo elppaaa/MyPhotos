@@ -78,7 +78,7 @@ extension AlbumViewController {
       .observe(on: MainScheduler.instance)
       .withUnretained(self)
       .subscribe(onNext: { vc, indexPath in
-        let asset = self.viewModel.output.photos.value[indexPath.row]
+        let asset = vc.viewModel.output.photos.value[indexPath.row]
         guard let name = asset.fileName, let size = asset.fileSize else { return }
         vc.alertAssetInfo(title: name, size: size)
       })

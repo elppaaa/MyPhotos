@@ -39,7 +39,12 @@ extension Reactive where Base: PHAsset {
      - size: 받아올 이미지의 크기를 지정.
    */
   func image(size: CGSize) -> Observable<UIImage?> {
-    .create { subscriber in
+    return .create { subscriber in
+      guard size != .zero else {
+        subscriber.onNext(nil)
+        return Disposables.create()
+      }
+
       let scale = UIScreen.main.scale
       let manager = PHImageManager.default()
       let option = PHImageRequestOptions()

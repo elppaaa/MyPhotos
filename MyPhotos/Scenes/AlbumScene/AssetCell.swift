@@ -36,7 +36,7 @@ final class AssetCell: UICollectionViewCell {
 
   private var disposable: Disposable?
 
-  private lazy var imageView = UIImageView().then {
+  private lazy var imageView = UIImageView(frame: bounds).then {
     $0.contentMode = .scaleAspectFill
     $0.clipsToBounds = true
   }
